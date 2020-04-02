@@ -1,0 +1,58 @@
+﻿@model Almacen_DBFirst.Models.Despacho
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Despacho</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoDeAccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoDeAccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contacto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contacto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DetalleDeProductos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DetalleDeProductos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.Codigo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
