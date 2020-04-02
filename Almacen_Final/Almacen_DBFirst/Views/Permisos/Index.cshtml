@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Almacen_DBFirst.Models.TiposDeClientes>
+﻿@model IEnumerable<Almacen_DBFirst.Models.Permisos>
 
 @{
     ViewBag.Title = "Index";
@@ -14,6 +14,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Nombre)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
         <th></th>
     </tr>
 
@@ -21,6 +24,9 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

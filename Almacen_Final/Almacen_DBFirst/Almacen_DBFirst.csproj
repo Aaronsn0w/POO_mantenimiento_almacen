@@ -130,51 +130,55 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
-    <Compile Include="Controllers\DespachoesController.cs" />
+    <Compile Include="Controllers\DespachosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PermisoesController.cs" />
-    <Compile Include="Controllers\ProductoesController.cs" />
+    <Compile Include="Controllers\PermisosController.cs" />
+    <Compile Include="Controllers\ProductosController.cs" />
     <Compile Include="Controllers\TiposDeClientesController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Cliente.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Despacho.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Context.cs">
+    <Compile Include="Models\AlmacenContext.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
+      <DependentUpon>AlmacenContext.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model1.cs">
+    <Compile Include="Models\AlmacenContext.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>AlmacenContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model1.Designer.cs">
+    <Compile Include="Models\AlmacenContext.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>AlmacenContext.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Permiso.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="Models\Clientes.cs">
+      <DependentUpon>AlmacenContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Producto.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="Models\Despachos.cs">
+      <DependentUpon>AlmacenContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TiposDeCliente.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="Models\Permisos.cs">
+      <DependentUpon>AlmacenContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Usuario.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="Models\Productos.cs">
+      <DependentUpon>AlmacenContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TiposDeClientes.cs">
+      <DependentUpon>AlmacenContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Usuarios.cs">
+      <DependentUpon>AlmacenContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\AlmacenDatabase.mdf" />
+    <Content Include="App_Data\AlmacenDatabase_log.ldf">
+      <DependentUpon>AlmacenDatabase.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -183,24 +187,25 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Model1.Context.tt">
+    <Content Include="Models\AlmacenContext.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>AlmacenContext.edmx</DependentUpon>
+      <LastGenOutput>AlmacenContext.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Model1.tt">
+    <Content Include="Models\AlmacenContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>AlmacenContext.edmx</DependentUpon>
+      <LastGenOutput>AlmacenContext.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\Model1.edmx.sql" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Model1.edmx">
+    <EntityDeploy Include="Models\AlmacenContext.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>AlmacenContext.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <Content Include="Models\AlmacenContext.edmx.diagram">
+      <DependentUpon>AlmacenContext.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -232,21 +237,21 @@
     <Content Include="Views\Clientes\Details.cshtml" />
     <Content Include="Views\Clientes\Edit.cshtml" />
     <Content Include="Views\Clientes\Index.cshtml" />
-    <Content Include="Views\Despachoes\Create.cshtml" />
-    <Content Include="Views\Despachoes\Delete.cshtml" />
-    <Content Include="Views\Despachoes\Details.cshtml" />
-    <Content Include="Views\Despachoes\Edit.cshtml" />
-    <Content Include="Views\Despachoes\Index.cshtml" />
-    <Content Include="Views\Permisoes\Create.cshtml" />
-    <Content Include="Views\Permisoes\Delete.cshtml" />
-    <Content Include="Views\Permisoes\Details.cshtml" />
-    <Content Include="Views\Permisoes\Edit.cshtml" />
-    <Content Include="Views\Permisoes\Index.cshtml" />
-    <Content Include="Views\Productoes\Create.cshtml" />
-    <Content Include="Views\Productoes\Delete.cshtml" />
-    <Content Include="Views\Productoes\Details.cshtml" />
-    <Content Include="Views\Productoes\Edit.cshtml" />
-    <Content Include="Views\Productoes\Index.cshtml" />
+    <Content Include="Views\Despachos\Create.cshtml" />
+    <Content Include="Views\Despachos\Delete.cshtml" />
+    <Content Include="Views\Despachos\Details.cshtml" />
+    <Content Include="Views\Despachos\Edit.cshtml" />
+    <Content Include="Views\Despachos\Index.cshtml" />
+    <Content Include="Views\Permisos\Create.cshtml" />
+    <Content Include="Views\Permisos\Delete.cshtml" />
+    <Content Include="Views\Permisos\Details.cshtml" />
+    <Content Include="Views\Permisos\Edit.cshtml" />
+    <Content Include="Views\Permisos\Index.cshtml" />
+    <Content Include="Views\Productos\Create.cshtml" />
+    <Content Include="Views\Productos\Delete.cshtml" />
+    <Content Include="Views\Productos\Details.cshtml" />
+    <Content Include="Views\Productos\Edit.cshtml" />
+    <Content Include="Views\Productos\Index.cshtml" />
     <Content Include="Views\TiposDeClientes\Create.cshtml" />
     <Content Include="Views\TiposDeClientes\Delete.cshtml" />
     <Content Include="Views\TiposDeClientes\Details.cshtml" />
@@ -258,9 +263,7 @@
     <Content Include="Views\Usuarios\Edit.cshtml" />
     <Content Include="Views\Usuarios\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

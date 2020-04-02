@@ -12,7 +12,7 @@ namespace Almacen_DBFirst.Controllers
 {
     public class TiposDeClientesController : Controller
     {
-        private AlmacenDBEntities db = new AlmacenDBEntities();
+        private AlmacenDatabaseEntities db = new AlmacenDatabaseEntities();
 
         // GET: TiposDeClientes
         public ActionResult Index()
@@ -27,12 +27,12 @@ namespace Almacen_DBFirst.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TiposDeCliente tiposDeCliente = db.TiposDeClientes.Find(id);
-            if (tiposDeCliente == null)
+            TiposDeClientes tiposDeClientes = db.TiposDeClientes.Find(id);
+            if (tiposDeClientes == null)
             {
                 return HttpNotFound();
             }
-            return View(tiposDeCliente);
+            return View(tiposDeClientes);
         }
 
         // GET: TiposDeClientes/Create
@@ -46,16 +46,16 @@ namespace Almacen_DBFirst.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre")] TiposDeCliente tiposDeCliente)
+        public ActionResult Create([Bind(Include = "Id,Nombre")] TiposDeClientes tiposDeClientes)
         {
             if (ModelState.IsValid)
             {
-                db.TiposDeClientes.Add(tiposDeCliente);
+                db.TiposDeClientes.Add(tiposDeClientes);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(tiposDeCliente);
+            return View(tiposDeClientes);
         }
 
         // GET: TiposDeClientes/Edit/5
@@ -65,12 +65,12 @@ namespace Almacen_DBFirst.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TiposDeCliente tiposDeCliente = db.TiposDeClientes.Find(id);
-            if (tiposDeCliente == null)
+            TiposDeClientes tiposDeClientes = db.TiposDeClientes.Find(id);
+            if (tiposDeClientes == null)
             {
                 return HttpNotFound();
             }
-            return View(tiposDeCliente);
+            return View(tiposDeClientes);
         }
 
         // POST: TiposDeClientes/Edit/5
@@ -78,15 +78,15 @@ namespace Almacen_DBFirst.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nombre")] TiposDeCliente tiposDeCliente)
+        public ActionResult Edit([Bind(Include = "Id,Nombre")] TiposDeClientes tiposDeClientes)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tiposDeCliente).State = EntityState.Modified;
+                db.Entry(tiposDeClientes).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(tiposDeCliente);
+            return View(tiposDeClientes);
         }
 
         // GET: TiposDeClientes/Delete/5
@@ -96,12 +96,12 @@ namespace Almacen_DBFirst.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TiposDeCliente tiposDeCliente = db.TiposDeClientes.Find(id);
-            if (tiposDeCliente == null)
+            TiposDeClientes tiposDeClientes = db.TiposDeClientes.Find(id);
+            if (tiposDeClientes == null)
             {
                 return HttpNotFound();
             }
-            return View(tiposDeCliente);
+            return View(tiposDeClientes);
         }
 
         // POST: TiposDeClientes/Delete/5
@@ -109,8 +109,8 @@ namespace Almacen_DBFirst.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(long id)
         {
-            TiposDeCliente tiposDeCliente = db.TiposDeClientes.Find(id);
-            db.TiposDeClientes.Remove(tiposDeCliente);
+            TiposDeClientes tiposDeClientes = db.TiposDeClientes.Find(id);
+            db.TiposDeClientes.Remove(tiposDeClientes);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

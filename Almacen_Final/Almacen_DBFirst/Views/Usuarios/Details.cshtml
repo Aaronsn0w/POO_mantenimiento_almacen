@@ -1,4 +1,4 @@
-﻿@model Almacen_DBFirst.Models.Usuario
+﻿@model Almacen_DBFirst.Models.Usuarios
 
 @{
     ViewBag.Title = "Details";
@@ -7,7 +7,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Usuario</h4>
+    <h4>Usuarios</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -51,11 +51,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Permiso.Nombre)
+            @Html.DisplayNameFor(model => model.Permisos.Nombre)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Permiso.Nombre)
+            @Html.DisplayFor(model => model.Permisos.Nombre)
         </dd>
 
     </dl>

@@ -1,4 +1,4 @@
-﻿@model Almacen_DBFirst.Models.Cliente
+﻿@model Almacen_DBFirst.Models.Clientes
 
 @{
     ViewBag.Title = "Details";
@@ -7,7 +7,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Cliente</h4>
+    <h4>Clientes</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -59,16 +59,16 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TiposDeCliente.Nombre)
+            @Html.DisplayNameFor(model => model.TiposDeClientes.Nombre)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TiposDeCliente.Nombre)
+            @Html.DisplayFor(model => model.TiposDeClientes.Nombre)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Regresar", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
 </p>

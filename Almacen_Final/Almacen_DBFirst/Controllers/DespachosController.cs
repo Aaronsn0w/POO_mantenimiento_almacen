@@ -10,112 +10,112 @@ using Almacen_DBFirst.Models;
 
 namespace Almacen_DBFirst.Controllers
 {
-    public class ClientesController : Controller
+    public class DespachosController : Controller
     {
         private AlmacenDatabaseEntities db = new AlmacenDatabaseEntities();
 
-        // GET: Clientes
+        // GET: Despachos
         public ActionResult Index()
         {
-            var clientes = db.Clientes.Include(c => c.TiposDeClientes);
-            return View(clientes.ToList());
+            var despachos = db.Despachos.Include(d => d.Clientes);
+            return View(despachos.ToList());
         }
 
-        // GET: Clientes/Details/5
+        // GET: Despachos/Details/5
         public ActionResult Details(long? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Clientes clientes = db.Clientes.Find(id);
-            if (clientes == null)
+            Despachos despachos = db.Despachos.Find(id);
+            if (despachos == null)
             {
                 return HttpNotFound();
             }
-            return View(clientes);
+            return View(despachos);
         }
 
-        // GET: Clientes/Create
+        // GET: Despachos/Create
         public ActionResult Create()
         {
-            ViewBag.IdTipoCliente = new SelectList(db.TiposDeClientes, "Id", "Nombre");
+            ViewBag.IdCliente = new SelectList(db.Clientes, "Id", "Codigo");
             return View();
         }
 
-        // POST: Clientes/Create
+        // POST: Despachos/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Codigo,Nombres,Apellidos,Direccion,Telefono,Correo,IdTipoCliente")] Clientes clientes)
+        public ActionResult Create([Bind(Include = "Id,Fecha,TipoDeAccion,IdCliente,Contacto,DetalleDeProductos")] Despachos despachos)
         {
             if (ModelState.IsValid)
             {
-                db.Clientes.Add(clientes);
+                db.Despachos.Add(despachos);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdTipoCliente = new SelectList(db.TiposDeClientes, "Id", "Nombre", clientes.IdTipoCliente);
-            return View(clientes);
+            ViewBag.IdCliente = new SelectList(db.Clientes, "Id", "Codigo", despachos.IdCliente);
+            return View(despachos);
         }
 
-        // GET: Clientes/Edit/5
+        // GET: Despachos/Edit/5
         public ActionResult Edit(long? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Clientes clientes = db.Clientes.Find(id);
-            if (clientes == null)
+            Despachos despachos = db.Despachos.Find(id);
+            if (despachos == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.IdTipoCliente = new SelectList(db.TiposDeClientes, "Id", "Nombre", clientes.IdTipoCliente);
-            return View(clientes);
+            ViewBag.IdCliente = new SelectList(db.Clientes, "Id", "Codigo", despachos.IdCliente);
+            return View(despachos);
         }
 
-        // POST: Clientes/Edit/5
+        // POST: Despachos/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Codigo,Nombres,Apellidos,Direccion,Telefono,Correo,IdTipoCliente")] Clientes clientes)
+        public ActionResult Edit([Bind(Include = "Id,Fecha,TipoDeAccion,IdCliente,Contacto,DetalleDeProductos")] Despachos despachos)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(clientes).State = EntityState.Modified;
+                db.Entry(despachos).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdTipoCliente = new SelectList(db.TiposDeClientes, "Id", "Nombre", clientes.IdTipoCliente);
-            return View(clientes);
+            ViewBag.IdCliente = new SelectList(db.Clientes, "Id", "Codigo", despachos.IdCliente);
+            return View(despachos);
         }
 
-        // GET: Clientes/Delete/5
+        // GET: Despachos/Delete/5
         public ActionResult Delete(long? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Clientes clientes = db.Clientes.Find(id);
-            if (clientes == null)
+            Despachos despachos = db.Despachos.Find(id);
+            if (despachos == null)
             {
                 return HttpNotFound();
             }
-            return View(clientes);
+            return View(despachos);
         }
 
-        // POST: Clientes/Delete/5
+        // POST: Despachos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(long id)
         {
-            Clientes clientes = db.Clientes.Find(id);
-            db.Clientes.Remove(clientes);
+            Despachos despachos = db.Despachos.Find(id);
+            db.Despachos.Remove(despachos);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

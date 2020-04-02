@@ -1,11 +1,13 @@
-﻿@model IEnumerable<Almacen_DBFirst.Models.Usuario>
+﻿@model IEnumerable<Almacen_DBFirst.Models.Usuarios>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Usuarios";
 }
 
-<h2>Index</h2>
-
+<h2>Usuarios</h2>
+<p>
+    @Html.ActionLink("Permisos", "Index", "Permisos")
+</p>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -27,7 +29,7 @@
             @Html.DisplayNameFor(model => model.Estado)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Permiso.Nombre)
+            @Html.DisplayNameFor(model => model.Permisos.Nombre)
         </th>
         <th></th>
     </tr>
@@ -50,7 +52,7 @@
             @Html.DisplayFor(modelItem => item.Estado)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Permiso.Nombre)
+            @Html.DisplayFor(modelItem => item.Permisos.Nombre)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

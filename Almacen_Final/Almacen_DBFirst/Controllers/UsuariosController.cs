@@ -12,12 +12,12 @@ namespace Almacen_DBFirst.Controllers
 {
     public class UsuariosController : Controller
     {
-        private AlmacenDBEntities db = new AlmacenDBEntities();
+        private AlmacenDatabaseEntities db = new AlmacenDatabaseEntities();
 
         // GET: Usuarios
         public ActionResult Index()
         {
-            var usuarios = db.Usuarios.Include(u => u.Permiso);
+            var usuarios = db.Usuarios.Include(u => u.Permisos);
             return View(usuarios.ToList());
         }
 
@@ -28,12 +28,12 @@ namespace Almacen_DBFirst.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
+            Usuarios usuarios = db.Usuarios.Find(id);
+            if (usuarios == null)
             {
                 return HttpNotFound();
             }
-            return View(usuario);
+            return View(usuarios);
         }
 
         // GET: Usuarios/Create
@@ -48,17 +48,17 @@ namespace Almacen_DBFirst.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombres,Apellidos,Email,Password,Rol,Estado")] Usuario usuario)
+        public ActionResult Create([Bind(Include = "Id,Nombres,Apellidos,Email,Password,Rol,Estado")] Usuarios usuarios)
         {
             if (ModelState.IsValid)
             {
-                db.Usuarios.Add(usuario);
+                db.Usuarios.Add(usuarios);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Rol = new SelectList(db.Permisos, "Id", "Nombre", usuario.Rol);
-            return View(usuario);
+            ViewBag.Rol = new SelectList(db.Permisos, "Id", "Nombre", usuarios.Rol);
+            return View(usuarios);
         }
 
         // GET: Usuarios/Edit/5
@@ -68,13 +68,13 @@ namespace Almacen_DBFirst.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
+            Usuarios usuarios = db.Usuarios.Find(id);
+            if (usuarios == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Rol = new SelectList(db.Permisos, "Id", "Nombre", usuario.Rol);
-            return View(usuario);
+            ViewBag.Rol = new SelectList(db.Permisos, "Id", "Nombre", usuarios.Rol);
+            return View(usuarios);
         }
 
         // POST: Usuarios/Edit/5
@@ -82,16 +82,16 @@ namespace Almacen_DBFirst.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nombres,Apellidos,Email,Password,Rol,Estado")] Usuario usuario)
+        public ActionResult Edit([Bind(Include = "Id,Nombres,Apellidos,Email,Password,Rol,Estado")] Usuarios usuarios)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(usuario).State = EntityState.Modified;
+                db.Entry(usuarios).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Rol = new SelectList(db.Permisos, "Id", "Nombre", usuario.Rol);
-            return View(usuario);
+            ViewBag.Rol = new SelectList(db.Permisos, "Id", "Nombre", usuarios.Rol);
+            return View(usuarios);
         }
 
         // GET: Usuarios/Delete/5
@@ -101,12 +101,12 @@ namespace Almacen_DBFirst.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
+            Usuarios usuarios = db.Usuarios.Find(id);
+            if (usuarios == null)
             {
                 return HttpNotFound();
             }
-            return View(usuario);
+            return View(usuarios);
         }
 
         // POST: Usuarios/Delete/5
@@ -114,8 +114,8 @@ namespace Almacen_DBFirst.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(long id)
         {
-            Usuario usuario = db.Usuarios.Find(id);
-            db.Usuarios.Remove(usuario);
+            Usuarios usuarios = db.Usuarios.Find(id);
+            db.Usuarios.Remove(usuarios);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

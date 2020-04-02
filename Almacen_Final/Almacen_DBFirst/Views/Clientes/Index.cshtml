@@ -1,18 +1,15 @@
-﻿@model IEnumerable<Almacen_DBFirst.Models.Cliente>
+﻿@model IEnumerable<Almacen_DBFirst.Models.Clientes>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Clientes";
 }
 
 <h2>Clientes</h2>
-
-<p class="mb-5 mt-5">
-    @Html.ActionLink("Tipos de Clientes", "Index", "TiposDeClientes")
-
-</p>
-
 <p>
-    @Html.ActionLink("Crear Nuevo", "Create")
+    @Html.ActionLink("Tipos De Clientes", "Index", "TiposDeClientes")
+</p>
+<p>
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
@@ -35,7 +32,7 @@
             @Html.DisplayNameFor(model => model.Correo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TiposDeCliente.Nombre)
+            @Html.DisplayNameFor(model => model.TiposDeClientes.Nombre)
         </th>
         <th></th>
     </tr>
@@ -61,12 +58,12 @@
             @Html.DisplayFor(modelItem => item.Correo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TiposDeCliente.Nombre)
+            @Html.DisplayFor(modelItem => item.TiposDeClientes.Nombre)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>
 }
